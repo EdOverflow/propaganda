@@ -1,4 +1,11 @@
-# Propaganda
+<div align="center">
+<img align="center" src="https://user-images.githubusercontent.com/18099289/60742609-54d56180-9f6e-11e9-9c5a-3e0009b7c707.png" height="200">
+</div>
+<div align="center">
+<br/>
+</div>
+<h1 align="center">Propaganda</h1>
+
 
 An interactive Shell script that generates a personal Jekyll website with links to your various publications by using Bibtex references.
 
