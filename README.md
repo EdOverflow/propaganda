@@ -35,4 +35,11 @@ Navigate to http://localhost:4000/ to see your website.
 
 Once you are done, simply navigate to http://localhost:4000/ to view your website.
 
+If you just want to add new references via a Bibtex file without editing the website, run the following:
+
+```
+$ ./propaganda bibtex
+Name of bibtex file: example.bib
+```
+
 <a href="https://www.buymeacoffee.com/edoverflow" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
