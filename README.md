@@ -3,8 +3,11 @@
 </div>
 <h1 align="center">Propaganda</h1>
 
-
 An interactive Shell script that generates a personal Jekyll website with links to your various publications by using Bibtex references.
+
+```
+                                Bibtex → YAML → _config.yml → Jekyll
+```
 
 ![](propaganda.png)
 
