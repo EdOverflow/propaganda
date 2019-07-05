@@ -1,0 +1,35 @@
+#!/bin/bash
+
+bibtex() {
+	read -p 'Name of bibtex file: ' bibtex
+
+	if [[ ! $(grep -i "bibtex:" _config.yml) ]]; then
+		echo "bibtex: " >> _config.yml
+		pandoc-citeproc --bib2yaml "$bibtex" | sed 's#^\.\.\.$\|\-\-\-\|references:##g' | sed '/^$/d' | sed 's/^/  /' >> _config.yml
+else
+		pandoc-citeproc --bib2yaml "$bibtex" | sed 's#^\.\.\.$\|\-\-\-\|references:##g' | sed '/^$/d' | sed 's/^/  /' >> _config.yml
+	fi
+}
+
+if [[ $1 == "" ]]; then
+	read -p 'Title of website: ' title
+	sed -i "s#propaganda_name:.*#propaganda_name: $title#g" _config.yml
+	read -p 'Your email address: ' email
+	sed -i "s#propaganda_email:.*#propaganda_email: $email#g" _config.yml
+	read -p 'Link to profile pic: ' pic
+	sed -i "s#propaganda_avatar:.*#propaganda_avatar: \"$pic\"#g" _config.yml
+	read -p 'Your description: ' desc
+	sed -i "s#propaganda_description:.*#propaganda_description: $desc#g" _config.yml
+	read -p 'Your Twitter handle: ' twitter
+	sed -i "s#propaganda_twitter_username:.*#propaganda_twitter_username: $twitter#g" _config.yml
+	read -p 'Your GitHub handle: ' twitter
+	sed -i "s#propaganda_github_username:.*#propaganda_github_username: $github#g" _config.yml
+
+	bibtex
+elif [[ $1 == "bibtex" ]]; then
+	bibtex
+fi
+
+echo "Navigate to http://localhost:4000/ to see your website."
+
+jekyll serve > /dev/null

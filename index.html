@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  {% if site.propaganda_avatar %}
+  <img src="{{ site.propaganda_avatar }}" alt="" class="avatar">
+  {% endif %}
+
+  <h1 class="title">{{ site.propaganda_name }}</h1>
+
+  {% if site.propaganda_description %}
+  <p>{{ site.propaganda_description }}</p>
+  {% endif %}
+
+  <h1>Publications</h1>
+
+  <ul class="post-list">
+    {% for e in site.bibtex %}
+    <li>
+      {% assign my_array = "" | split: ',' %}
+      {% for a in e.author %}
+        {% assign f = a.given | append: ' ' | append: a.family %}
+        {% assign my_array = my_array | push: f %}
+      {% endfor %}
+      <small>
+        {% for y in e.issued %}
+          {{ y.year }} —
+        {% endfor %}
+        {{ my_array | array_to_sentence_string }}
+      </small>
+      <h2>
+        {% if e.URL %}
+        <a class="post-link" href="{{ e.URL }}">{{ e.title }}</a>
+        {% else %}
+        <p class="post-link">{{ e.title }}</p>
+        {% endif %}
+      </h2>
+      {% if e.abstract %}
+      <p>
+        <b>Abstract: </b> {{ e.abstract }}
+      </p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
